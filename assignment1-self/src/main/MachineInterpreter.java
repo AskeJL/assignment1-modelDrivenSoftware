@@ -8,7 +8,7 @@ public class MachineInterpreter {
 	private State currentState; // runtime state
 
 	public void run(Machine m) {
-		// TODO Auto-generated method stub sldkjngsdngljkngdgdlksg
+		// TODO Auto-generated method stub
 		
 	}
 

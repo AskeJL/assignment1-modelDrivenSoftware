@@ -15,15 +15,19 @@ public class State {
 	}
 
 	public List<Transition> getTransitions() {
-		// TODO Auto-generated method stub
 		return trans;
 	}
 
 	public void addTransition(Transition t) {
 		this.trans.add(t);
 	}
-	public Transition getTransitionByEvent(String string) {
-		// TODO Auto-generated method stub
+
+	public Transition getTransitionByEvent(String event) {
+		for (int i = 0; i < trans.size(); i++) {
+			if(trans.get(i).getEvent().equals(event)){
+				return trans.get(i);
+			}
+		}
 		return null;
 	}
 

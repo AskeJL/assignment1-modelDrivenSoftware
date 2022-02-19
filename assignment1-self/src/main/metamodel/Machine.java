@@ -1,13 +1,12 @@
 package main.metamodel;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Machine {
 
 	private List<State> states = new ArrayList<State>();
 	private State initialState;
+	Map<String, Integer> intCollection = new HashMap();
 	public Machine(Collection<State> states, State initialState) {
 		super();
 		this.states.addAll(states);
@@ -15,7 +14,6 @@ public class Machine {
 	}
 
 	public List<State> getStates() {
-
 		return states;
 	}
 
@@ -23,19 +21,21 @@ public class Machine {
 		return initialState;
 	}
 
-	public State getState(String string) {
-		// TODO Auto-generated method stub
+	public State getState(String state) {
+		for (int i = 0; i < states.size(); i++) {
+			if (states.get(i).equals(state)){
+				return states.get(i);
+			}
+		}
 		return null;
 	}
 
 	public int numberOfIntegers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return intCollection.size();
 	}
 
-	public boolean hasInteger(String string) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean hasInteger(String integer) {
+		return intCollection.containsKey(integer);
 	}
 
 }

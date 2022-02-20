@@ -8,13 +8,13 @@ public class MachineInterpreter {
 	private State currentState; // runtime state
 
 	public void run(Machine m) {
-		// TODO Auto-generated method stub
+		machine = m;
 		
 	}
 
 	public State getCurrentState() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return machine.getInitialState();
 	}
 
 	public void processEvent(String string) {

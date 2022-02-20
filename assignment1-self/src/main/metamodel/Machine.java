@@ -7,10 +7,10 @@ public class Machine {
 	private List<State> states = new ArrayList<State>();
 	private State initialState;
 	Map<String, Integer> intCollection = new HashMap();
-	public Machine(Collection<State> states, State initialState, Map<String, Integer> ints) {
+	public Machine(Collection<State> states, State initialState, Map<String, Integer> intCollection) {
 		super();
 		this.states.addAll(states);
-		this.intCollection.putAll(ints);
+		this.intCollection.putAll(intCollection);
 		this.initialState = initialState;
 	}
 

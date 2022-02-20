@@ -1,13 +1,10 @@
 package main.metamodel;
 
-import java.util.Map;
-
 public class Transition {
 	private String event;
 	private State to;
-	private Map effect;
-
-	public Transition(String event, State to, Map<String, String> effect) {
+	private Runnable effect;
+	public Transition(String event, State to, Runnable effect) {
 		super();
 		this.event = event;
 		this.to = to;
@@ -27,23 +24,17 @@ public class Transition {
 	}
 
 	public boolean hasSetOperation() {
-		if(effect.containsKey("SET")){
-			return true;
-		}
-		return false;
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 	public boolean hasIncrementOperation() {
-		if(effect.containsKey("INCREMENT")){
-			return true;
-		}
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean hasDecrementOperation() {
-		if(effect.containsKey("DECREMENT")){
-			return true;
-		}
+		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -82,18 +82,24 @@ public class StateMachine {
 	}
 
 	public StateMachine set(String intVar, int i) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setSetOp();
 		intCollection.replace(intVar, i);
 		return this;
 	}
 
-	public StateMachine increment(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public StateMachine increment(String intVar) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setIncrementOP();
+		intCollection.put(intVar , intCollection.get(intVar)+1);
+		return this;
 	}
 
-	public StateMachine decrement(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public StateMachine decrement(String intVar) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setDecrementOP();
+		intCollection.put(intVar , intCollection.get(intVar)-1);
+		return this;
 	}
 
 	public StateMachine ifEquals(String string, int i) {

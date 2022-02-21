@@ -4,6 +4,10 @@ public class Transition {
 	private String event;
 	private State to;
 	private Runnable effect;
+	private  Boolean setOP = false;
+	private  Boolean incrementOP = false;
+	private  Boolean decrementOP = false;
+	private  Boolean isConditional = false;
 	public Transition(String event, State to, Runnable effect) {
 		super();
 		this.event = event;
@@ -23,29 +27,30 @@ public class Transition {
 		this.to = state;
 	}
 
+	public void setSetOp(){this.setOP = true;}
+
 	public boolean hasSetOperation() {
-		// TODO Auto-generated method stub
-		return true;
+		return setOP;
 	}
 
 	public boolean hasIncrementOperation() {
 		// TODO Auto-generated method stub
-		return false;
+		return incrementOP;
 	}
 
 	public boolean hasDecrementOperation() {
 		// TODO Auto-generated method stub
-		return false;
+		return decrementOP;
 	}
 
 	public Object getOperationVariableName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "var";
 	}
 
 	public boolean isConditional() {
 		// TODO Auto-generated method stub
-		return false;
+		return isConditional;
 	}
 
 	public Object getConditionVariableName() {
@@ -78,4 +83,15 @@ public class Transition {
 		return false;
 	}
 
+	public void setIncrementOP() {
+		this.incrementOP = true;
+	}
+
+	public void setDecrementOP() {
+		this.decrementOP = true;
+	}
+
+	public void setConditional() {
+		isConditional = true;
+	}
 }

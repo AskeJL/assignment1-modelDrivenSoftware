@@ -14,12 +14,17 @@ public class MachineInterpreter {
 
 	public State getCurrentState() {
 
-		return machine.getInitialState();
+		return machine.getCurrentState();
 	}
 
-	public void processEvent(String string) {
-		// TODO Auto-generated method stub
-		
+	public void processEvent(String event) {
+		currentState = machine.getCurrentState();
+		if(machine.getCurrentState().getTransitionByEvent(event).getTarget() != null) {
+			State targetState = machine.getCurrentState().getTransitionByEvent(event).getTarget();
+			machine.setCurrentState(targetState);
+			currentState = targetState;
+		}
+
 	}
 
 	public int getInteger(String string) {

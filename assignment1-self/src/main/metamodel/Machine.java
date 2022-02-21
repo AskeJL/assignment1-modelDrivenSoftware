@@ -6,12 +6,14 @@ public class Machine {
 
 	private List<State> states = new ArrayList<State>();
 	private State initialState;
+	private State currentState;
 	Map<String, Integer> intCollection = new HashMap();
-	public Machine(Collection<State> states, State initialState, Map<String, Integer> intCollection) {
+	public Machine(Collection<State> states, State initialState, State currentState, Map<String, Integer> intCollection) {
 		super();
 		this.states.addAll(states);
 		this.intCollection.putAll(intCollection);
 		this.initialState = initialState;
+		this.currentState = initialState;
 	}
 
 	public List<State> getStates() {
@@ -37,6 +39,14 @@ public class Machine {
 
 	public boolean hasInteger(String integer) {
 		return intCollection.containsKey(integer);
+	}
+
+	public State getCurrentState(){
+		return currentState;
+	}
+
+	public void setCurrentState(State state){
+		currentState = state;
 	}
 
 }

@@ -16,7 +16,7 @@ public class StateMachine {
 	Transition currentTransition = null;
 
 	public Machine build() {
-		Machine m = new Machine(stateList, initialState, intCollection);
+		Machine m = new Machine(stateList, initialState, initialState, intCollection);
 		return m;
 	}
 
@@ -44,7 +44,11 @@ public class StateMachine {
 				return this;
 			}
 		}
+
 		Transition newTransition = new Transition(event, null, null);
+		if(event.equals("GO")){
+			newTransition.setOperation();
+		}
 		currentState.addTransition(newTransition);
 		currentTransition = newTransition;
 		return this;
@@ -84,6 +88,7 @@ public class StateMachine {
 	public StateMachine set(String intVar, int i) {
 		State state = stateList.get(stateList.indexOf(currentState));
 		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setSetOp();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(intVar);
 		intCollection.replace(intVar, i);
 		return this;
 	}
@@ -91,6 +96,7 @@ public class StateMachine {
 	public StateMachine increment(String intVar) {
 		State state = stateList.get(stateList.indexOf(currentState));
 		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setIncrementOP();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(intVar);
 		intCollection.put(intVar , intCollection.get(intVar)+1);
 		return this;
 	}
@@ -98,23 +104,36 @@ public class StateMachine {
 	public StateMachine decrement(String intVar) {
 		State state = stateList.get(stateList.indexOf(currentState));
 		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setDecrementOP();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(intVar);
 		intCollection.put(intVar , intCollection.get(intVar)-1);
 		return this;
 	}
 
-	public StateMachine ifEquals(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public StateMachine ifEquals(String compareVar, int i) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setConditional();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(compareVar);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setCompareVar(i);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariableInt(42);
+		return this;
 	}
 
-	public StateMachine ifGreaterThan(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public StateMachine ifGreaterThan(String compareVar, int i) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setConditional();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(compareVar);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariableInt(41);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setCompareVar(i);
+		return this;
 	}
 
-	public StateMachine ifLessThan(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public StateMachine ifLessThan(String compareVar, int i) {
+		State state = stateList.get(stateList.indexOf(currentState));
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setConditional();
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariable(compareVar);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setVariableInt(43);
+		state.getTransitions().get(state.getTransitions().indexOf(currentTransition)).setCompareVar(i);
+		return this;
 	}
 
 }
